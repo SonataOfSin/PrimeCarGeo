@@ -1,6 +1,7 @@
 import maybach from "@/assets/fleet-maybach.jpg";
 import sclass from "@/assets/fleet-sclass.jpg";
 import vclass from "@/assets/fleet-vclass.jpg";
+import type { Vehicle } from "@/services/bookings";
 
 /**
  * MOCK FLEET DATA — placeholder until a real fleet source (CMS / backend) exists.
@@ -29,12 +30,12 @@ export interface FleetVehicle {
   imageHeight: number;
   passengers: number;
   luggage: number;
-  /** MOCK starting price, in GEL */
+  /** MOCK starting price, in GEL — not a company quote */
   priceFrom: number;
   /** Currency symbol shown next to the price */
   currency: string;
-  /** Value used to prefill the booking widget (matches services/bookings VEHICLES) */
-  bookingRef: string;
+  /** Prefills the booking widget; matches the VEHICLES enum in services/bookings */
+  bookingRef: Vehicle;
 }
 
 export const FLEET_VEHICLES: FleetVehicle[] = [

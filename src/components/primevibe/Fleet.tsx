@@ -19,6 +19,7 @@ export const Fleet = () => {
     features: t("fleet.card.features"),
     indicative: t("fleet.card.indicative"),
     unit: t("fleet.card.unit"),
+    close: t("fleet.card.close"),
   };
 
   const toDisplay = (v: FleetVehicle): VehicleDisplayData => ({
@@ -54,7 +55,7 @@ export const Fleet = () => {
           <VehicleCard
             key={vehicle.id}
             className="snap-start shrink-0 w-[85vw] sm:w-[480px] md:w-[560px]"
-            data={toDisplay(vehicle)}
+            vehicle={toDisplay(vehicle)}
             labels={labels}
             onBook={() => requestBooking({ vehicle: vehicle.bookingRef })}
           />
