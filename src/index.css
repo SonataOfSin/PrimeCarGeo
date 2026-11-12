@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Drivero luxury palette
+       Onyx #0D0C0A, Gold #BF9850, Bone #F6F2EB */
+    --background: 40 30% 95%;            /* bone */
+    --foreground: 40 11% 5%;              /* onyx */
+
+    --card: 0 0% 100%;
+    --card-foreground: 40 11% 5%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 40 11% 5%;
+
+    --primary: 40 11% 5%;                 /* onyx — main brand */
+    --primary-foreground: 40 30% 95%;
+
+    --secondary: 40 20% 88%;
+    --secondary-foreground: 40 11% 5%;
+
+    --muted: 40 18% 90%;
+    --muted-foreground: 40 8% 35%;
+
+    --accent: 39 41% 52%;                 /* gold */
+    --accent-foreground: 40 11% 5%;
+
+    --gold: 39 41% 52%;
+    --gold-foreground: 40 11% 5%;
+    --onyx: 40 11% 5%;
+    --bone: 40 30% 95%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 40 30% 95%;
+
+    --border: 40 15% 82%;
+    --input: 40 15% 82%;
+    --ring: 39 41% 52%;
+
+    --radius: 0.25rem;
+
+    --gradient-gold: linear-gradient(135deg, hsl(39 50% 60%), hsl(39 41% 45%));
+    --gradient-onyx: linear-gradient(180deg, hsl(40 11% 8% / 0), hsl(40 11% 5% / 0.95));
+    --shadow-luxe: 0 30px 80px -20px hsl(40 11% 5% / 0.35);
+    --shadow-gold: 0 10px 40px -10px hsl(39 41% 45% / 0.45);
+    --transition-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 40 11% 5%;
+    --foreground: 40 30% 95%;
+    --card: 40 11% 8%;
+    --card-foreground: 40 30% 95%;
+    --popover: 40 11% 8%;
+    --popover-foreground: 40 30% 95%;
+    --primary: 40 30% 95%;
+    --primary-foreground: 40 11% 5%;
+    --secondary: 40 11% 12%;
+    --secondary-foreground: 40 30% 95%;
+    --muted: 40 11% 12%;
+    --muted-foreground: 40 10% 65%;
+    --accent: 39 41% 52%;
+    --accent-foreground: 40 11% 5%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 40 30% 95%;
+    --border: 40 11% 18%;
+    --input: 40 11% 18%;
+    --ring: 39 41% 52%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--accent) / 0.7), transparent);
+  }
+  .glass-dark {
+    background: hsl(40 11% 5% / 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .glass-light {
+    background: hsl(40 30% 95% / 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { scrollbar-width: none; }
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+}
